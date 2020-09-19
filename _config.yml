@@ -21,7 +21,7 @@ pretty_urls:
   trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
   trailing_html: true # Set to false to remove trailing '.html' from permalinks
 
-# Directory
+# Directory git push -u origin payment
 source_dir: source
 public_dir: public
 tag_dir: tags
