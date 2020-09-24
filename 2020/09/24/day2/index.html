@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="小程序基础 第二天 一、 小程序项目的结构1234567891011121314├── pages ······································ 【目录】存放所有的小程序页面│   │── index ···································· 【目录】index 页面│   │   ├── index.wxml ···········">
+<meta property="og:type" content="article">
+<meta property="og:title" content="小程序day2">
+<meta property="og:url" content="http://example.com/2020/09/24/day2/index.html">
+<meta property="og:site_name" content="超超的博客">
+<meta property="og:description" content="小程序基础 第二天 一、 小程序项目的结构1234567891011121314├── pages ······································ 【目录】存放所有的小程序页面│   │── index ···································· 【目录】index 页面│   │   ├── index.wxml ···········">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2020/09/24/day2/images/2minavue.png">
+<meta property="og:image" content="http://example.com/2020/09/24/day2/images/2view.png">
+<meta property="og:image" content="http://example.com/2020/09/24/day2/images/2wxss.png">
+<meta property="og:image" content="http://example.com/2020/09/24/day2/images/2xcxwindow.png">
+<meta property="og:image" content="http://example.com/2020/09/24/day2/images/2tabbarb.png">
+<meta property="og:image" content="http://example.com/2020/09/24/day2/images/2tabbart.png">
+<meta property="og:image" content="http://example.com/2020/09/24/day2/images/2tabbar.png">
+<meta property="og:image" content="http://example.com/2020/09/24/day2/images/2LifeCycle.png">
+<meta property="article:published_time" content="2020-09-24T06:40:43.346Z">
+<meta property="article:modified_time" content="2020-09-24T06:40:43.346Z">
+<meta property="article:author" content="rcc">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2020/09/24/day2/images/2minavue.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>小程序day2</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/projects_url">项目</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2020/09/24/day1/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2020/09/24/hello-world/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2020/09/24/day2/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2020/09/24/day2/&text=小程序day2"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2020/09/24/day2/&title=小程序day2"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2020/09/24/day2/&is_video=false&description=小程序day2"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=小程序day2&body=Check out this article: http://example.com/2020/09/24/day2/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2020/09/24/day2/&title=小程序day2"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2020/09/24/day2/&title=小程序day2"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2020/09/24/day2/&title=小程序day2"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2020/09/24/day2/&title=小程序day2"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2020/09/24/day2/&name=小程序day2&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2020/09/24/day2/&t=小程序day2"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%9F%BA%E7%A1%80-%E7%AC%AC%E4%BA%8C%E5%A4%A9"><span class="toc-number">1.</span> <span class="toc-text">小程序基础 第二天</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%80%E3%80%81-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%A1%B9%E7%9B%AE%E7%9A%84%E7%BB%93%E6%9E%84"><span class="toc-number">1.1.</span> <span class="toc-text">一、 小程序项目的结构</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%A1%B5%E9%9D%A2%E7%9A%84%E7%BB%93%E6%9E%84"><span class="toc-number">1.2.</span> <span class="toc-text">二、小程序页面的结构</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#001-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%A1%B5%E9%9D%A2%E5%92%8C-Vue-%E7%BB%84%E4%BB%B6%E7%9A%84%E5%AF%B9%E6%AF%94"><span class="toc-number">1.2.1.</span> <span class="toc-text">001 - 小程序页面和 Vue 组件的对比</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#002-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%A1%B5%E9%9D%A2%E4%B8%AD%E6%AF%8F%E4%B8%AA%E6%96%87%E4%BB%B6%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-number">1.2.2.</span> <span class="toc-text">002 - 小程序页面中每个文件的作用</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%88%9B%E5%BB%BA%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%A1%B5%E9%9D%A2"><span class="toc-number">1.3.</span> <span class="toc-text">三、创建小程序页面</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E4%BF%AE%E6%94%B9%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%A1%B9%E7%9B%AE%E7%9A%84%E9%BB%98%E8%AE%A4%E9%A6%96%E9%A1%B5"><span class="toc-number">1.4.</span> <span class="toc-text">四、修改小程序项目的默认首页</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%94%E3%80%81text-%E6%96%87%E6%9C%AC%E7%BB%84%E4%BB%B6%E7%9A%84%E7%94%A8%E6%B3%95"><span class="toc-number">1.5.</span> <span class="toc-text">五、text 文本组件的用法</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#001-text-%E7%BB%84%E4%BB%B6%E7%9A%84%E5%B1%9E%E6%80%A7"><span class="toc-number">1.5.1.</span> <span class="toc-text">001 - text 组件的属性</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#002-%E4%BB%A3%E7%A0%81%E6%A1%88%E4%BE%8B"><span class="toc-number">1.5.2.</span> <span class="toc-text">002 - 代码案例</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%85%AD%E3%80%81view-%E8%A7%86%E5%9B%BE%E5%AE%B9%E5%99%A8%E7%BB%84%E4%BB%B6%E7%9A%84%E7%94%A8%E6%B3%95"><span class="toc-number">1.6.</span> <span class="toc-text">六、view 视图容器组件的用法</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#001-%E7%BB%84%E4%BB%B6%E7%9A%84%E5%B1%9E%E6%80%A7"><span class="toc-number">1.6.1.</span> <span class="toc-text">001 - 组件的属性</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#002-%E4%BB%A3%E7%A0%81%E6%A1%88%E4%BE%8B-1"><span class="toc-number">1.6.2.</span> <span class="toc-text">002 - 代码案例</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%83%E3%80%81button-%E6%8C%89%E9%92%AE%E7%BB%84%E4%BB%B6%E7%9A%84%E7%94%A8%E6%B3%95"><span class="toc-number">1.7.</span> <span class="toc-text">七、button 按钮组件的用法</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#001-%E7%BB%84%E4%BB%B6%E7%9A%84%E5%B1%9E%E6%80%A7-1"><span class="toc-number">1.7.1.</span> <span class="toc-text">001 - 组件的属性</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#002-%E6%A1%88%E4%BE%8B%E4%BB%A3%E7%A0%81"><span class="toc-number">1.7.2.</span> <span class="toc-text">002 - 案例代码</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%85%AB%E3%80%81input-%E6%96%87%E6%9C%AC%E8%BE%93%E5%85%A5%E6%A1%86%E7%BB%84%E4%BB%B6%E7%9A%84%E7%94%A8%E6%B3%95"><span class="toc-number">1.8.</span> <span class="toc-text">八、input 文本输入框组件的用法</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#001-input-%E7%BB%84%E4%BB%B6%E5%B1%9E%E6%80%A7"><span class="toc-number">1.8.1.</span> <span class="toc-text">001 - input 组件属性</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#002-%E6%A1%88%E4%BE%8B%E4%BB%A3%E7%A0%81-1"><span class="toc-number">1.8.2.</span> <span class="toc-text">002 - 案例代码</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B9%9D%E3%80%81image-%E5%9B%BE%E7%89%87%E7%BB%84%E4%BB%B6%E7%9A%84%E7%94%A8%E6%B3%95"><span class="toc-number">1.9.</span> <span class="toc-text">九、image 图片组件的用法</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#001-image-%E7%BB%84%E4%BB%B6%E5%B8%B8%E7%94%A8%E7%9A%84%E5%B1%9E%E6%80%A7"><span class="toc-number">1.9.1.</span> <span class="toc-text">001 - image 组件常用的属性</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#002-%E6%A1%88%E4%BE%8B%E4%BB%A3%E7%A0%81-2"><span class="toc-number">1.9.2.</span> <span class="toc-text">002 - 案例代码</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8D%81%E3%80%81wxss-%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%9A%84%E6%A0%B7%E5%BC%8F%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-number">1.10.</span> <span class="toc-text">十、wxss 中常用的样式选择器</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#001-%E5%88%9D%E5%A7%8B-wxss"><span class="toc-number">1.10.1.</span> <span class="toc-text">001 - 初始 wxss</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#002-wxss-%E5%92%8C-css-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.10.2.</span> <span class="toc-text">002 - wxss 和 css 的区别</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8D%81%E4%B8%80%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF-wxss"><span class="toc-number">1.11.</span> <span class="toc-text">十一、什么是 wxss</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#001-wxss-%E7%9B%AE%E5%89%8D%E6%94%AF%E6%8C%81%E7%9A%84%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-number">1.11.1.</span> <span class="toc-text">001 - wxss 目前支持的选择器</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#002-%E6%A1%88%E4%BE%8B%E4%BB%A3%E7%A0%81-3"><span class="toc-number">1.11.2.</span> <span class="toc-text">002 - 案例代码</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8D%81%E4%BA%8C%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF-rpx-%E5%B0%BA%E5%AF%B8%E5%8D%95%E4%BD%8D"><span class="toc-number">1.12.</span> <span class="toc-text">十二、什么是 rpx 尺寸单位</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8D%81%E4%BA%8C%E3%80%81rpx-%E4%B8%8E-px-%E4%B9%8B%E9%97%B4%E7%9A%84%E6%8D%A2%E7%AE%97"><span class="toc-number">1.13.</span> <span class="toc-text">十二、rpx 与 px 之间的换算</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8D%81%E4%BA%8C%E3%80%81rpx-%E5%92%8C-iPhone6-%E8%AE%BE%E8%AE%A1%E7%A8%BF%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">1.14.</span> <span class="toc-text">十二、rpx 和 iPhone6 设计稿的关系</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8D%81%E4%B8%89%E3%80%81-import-%E6%A0%B7%E5%BC%8F%E5%AF%BC%E5%85%A5"><span class="toc-number">1.15.</span> <span class="toc-text">十三、 @import 样式导入</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#001-%E8%AF%AD%E6%B3%95%E8%A7%A3%E9%87%8A"><span class="toc-number">1.15.1.</span> <span class="toc-text">001 - 语法解释</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#002-%E6%A1%88%E4%BE%8B%E4%BB%A3%E7%A0%81-4"><span class="toc-number">1.15.2.</span> <span class="toc-text">002 - 案例代码</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8D%81%E5%9B%9B%E3%80%81-%E5%85%A8%E5%B1%80%E6%A0%B7%E5%BC%8F%E5%92%8C%E5%B1%80%E9%83%A8%E6%A0%B7%E5%BC%8F"><span class="toc-number">1.16.</span> <span class="toc-text">十四、 全局样式和局部样式</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#001-%E5%85%A8%E5%B1%80%E6%A0%B7%E5%BC%8F"><span class="toc-number">1.16.1.</span> <span class="toc-text">001 - 全局样式</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#002-%E5%B1%80%E9%83%A8%E6%A0%B7%E5%BC%8F"><span class="toc-number">1.16.2.</span> <span class="toc-text">002 - 局部样式</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8D%81%E4%BA%94%E3%80%81app-json-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">1.17.</span> <span class="toc-text">十五、app.json 配置文件</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8D%81%E5%85%AD%E3%80%81pages-%E6%95%B0%E7%BB%84%E7%9A%84%E7%94%A8%E6%B3%95"><span class="toc-number">1.18.</span> <span class="toc-text">十六、pages 数组的用法</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#001-%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE"><span class="toc-number">1.18.1.</span> <span class="toc-text">001 - 基础配置</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#002-%E5%88%9B%E5%BB%BA%E9%A1%B5%E9%9D%A2%E7%9A%84%E5%8F%A6%E4%B8%80%E7%A7%8D%E6%96%B9%E5%BC%8F"><span class="toc-number">1.18.2.</span> <span class="toc-text">002 - 创建页面的另一种方式</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#003-%E8%AE%BE%E7%BD%AE%E9%A1%B9%E7%9B%AE%E7%9A%84%E9%A6%96%E9%A1%B5"><span class="toc-number">1.18.3.</span> <span class="toc-text">003 - 设置项目的首页</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8D%81%E4%B8%83%E3%80%81%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%AA%97%E5%8F%A3%E7%9A%84%E7%BB%84%E6%88%90%E9%83%A8%E5%88%86"><span class="toc-number">1.19.</span> <span class="toc-text">十七、小程序窗口的组成部分</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8D%81%E5%85%AB%E3%80%81%E8%AE%BE%E7%BD%AE%E5%AF%BC%E8%88%AA%E6%A0%8F%E6%A0%87%E9%A2%98%E6%96%87%E5%AD%97%E5%86%85%E5%AE%B9"><span class="toc-number">1.20.</span> <span class="toc-text">十八、设置导航栏标题文字内容</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8D%81%E4%B9%9D%E3%80%81%E8%AE%BE%E7%BD%AE%E5%AF%BC%E8%88%AA%E6%A0%8F%E8%83%8C%E6%99%AF%E8%89%B2"><span class="toc-number">1.21.</span> <span class="toc-text">十九、设置导航栏背景色</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%8C%E5%8D%81%E3%80%81%E8%AE%BE%E7%BD%AE%E5%AF%BC%E8%88%AA%E6%A0%8F%E6%A0%87%E9%A2%98%E9%A2%9C%E8%89%B2"><span class="toc-number">1.22.</span> <span class="toc-text">二十、设置导航栏标题颜色</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%8C%E5%8D%81%E4%B8%80%E3%80%81%E5%85%A8%E5%B1%80%E5%BC%80%E5%90%AF%E4%B8%8B%E6%8B%89%E5%88%B7%E6%96%B0%E5%8A%9F%E8%83%BD"><span class="toc-number">1.23.</span> <span class="toc-text">二十一、全局开启下拉刷新功能</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%8C%E5%8D%81%E4%BA%8C%E3%80%81%E8%AE%BE%E7%BD%AE%E4%B8%8B%E6%8B%89%E5%88%B7%E6%96%B0%E7%AA%97%E5%8F%A3%E7%9A%84%E8%83%8C%E6%99%AF%E8%89%B2"><span class="toc-number">1.24.</span> <span class="toc-text">二十二、设置下拉刷新窗口的背景色</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%8C%E5%8D%81%E4%B8%89%E3%80%81%E8%AE%BE%E7%BD%AE%E4%B8%8B%E6%8B%89-loading-%E7%9A%84%E6%A0%B7%E5%BC%8F"><span class="toc-number">1.25.</span> <span class="toc-text">二十三、设置下拉 loading 的样式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%8C%E5%8D%81%E5%9B%9B%E3%80%81%E8%AE%BE%E7%BD%AE%E4%B8%8A%E6%8B%89%E8%A7%A6%E5%BA%95%E7%9A%84%E8%B7%9D%E7%A6%BB"><span class="toc-number">1.26.</span> <span class="toc-text">二十四、设置上拉触底的距离</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%8C%E5%8D%81%E4%BA%94%E3%80%81tabBar-%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-number">1.27.</span> <span class="toc-text">二十五、tabBar 的概念</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%8C%E5%8D%81%E5%85%AD%E3%80%81tabBar-%E7%9A%84%E7%BB%84%E6%88%90%E9%83%A8%E5%88%86"><span class="toc-number">1.28.</span> <span class="toc-text">二十六、tabBar 的组成部分</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%8C%E5%8D%81%E4%B8%83%E3%80%81tabBar-%E8%8A%82%E7%82%B9%E7%9A%84%E9%85%8D%E7%BD%AE%E9%A1%B9"><span class="toc-number">1.29.</span> <span class="toc-text">二十七、tabBar 节点的配置项</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#001-tabBar-%E8%8A%82%E7%82%B9%E7%9A%84%E9%85%8D%E7%BD%AE%E9%A1%B9"><span class="toc-number">1.29.1.</span> <span class="toc-text">001 - tabBar 节点的配置项</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#002-list-%E8%8A%82%E7%82%B9%E7%9A%84%E9%85%8D%E7%BD%AE%E9%A1%B9"><span class="toc-number">1.29.2.</span> <span class="toc-text">002 - list 节点的配置项</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%8C%E5%8D%81%E5%85%AB%E3%80%81%E9%A1%B5%E9%9D%A2%E9%85%8D%E7%BD%AE"><span class="toc-number">1.30.</span> <span class="toc-text">二十八、页面配置</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#001-%E9%A1%B5%E9%9D%A2%E9%85%8D%E7%BD%AE%E5%92%8C%E5%B1%80%E9%83%A8%E9%85%8D%E7%BD%AE%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">1.30.1.</span> <span class="toc-text">001 - 页面配置和局部配置的关系</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#002-%E9%A1%B5%E9%9D%A2%E9%85%8D%E7%BD%AE%E5%B1%9E%E6%80%A7"><span class="toc-number">1.30.2.</span> <span class="toc-text">002 - 页面配置属性</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%8C%E5%8D%81%E4%B9%9D%E3%80%81%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-number">1.31.</span> <span class="toc-text">二十九、生命周期的概念</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#001-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-number">1.31.1.</span> <span class="toc-text">001 - 小程序的生命周期</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#002-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E7%9A%84%E4%B8%A4%E7%A7%8D%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.31.2.</span> <span class="toc-text">002 - 小程序生命周期的两种类型</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%89%E5%8D%81-%E3%80%81%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%87%BD%E6%95%B0"><span class="toc-number">1.32.</span> <span class="toc-text">三十 、小程序的生命周期函数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%89%E5%8D%81%E4%B8%80%E3%80%81%E5%BA%94%E7%94%A8%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%87%BD%E6%95%B0"><span class="toc-number">1.33.</span> <span class="toc-text">三十一、应用生命周期函数</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#001-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E7%9A%84%E5%88%86%E7%B1%BB"><span class="toc-number">1.33.1.</span> <span class="toc-text">001 - 小程序生命周期的分类</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#002-%E5%BA%94%E7%94%A8%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-number">1.33.2.</span> <span class="toc-text">002 - 应用生命周期</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%89%E5%8D%81%E4%BA%8C%E3%80%81%E9%A1%B5%E9%9D%A2%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%87%BD%E6%95%B0"><span class="toc-number">1.34.</span> <span class="toc-text">三十二、页面生命周期函数</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        小程序day2
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">超超的博客</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2020-09-24T06:40:43.346Z" itemprop="datePublished">2020-09-24</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h4 id="小程序基础-第二天"><a href="#小程序基础-第二天" class="headerlink" title="小程序基础 第二天"></a>小程序基础 第二天</h4><hr>
+<h5 id="一、-小程序项目的结构"><a href="#一、-小程序项目的结构" class="headerlink" title="一、 小程序项目的结构"></a>一、 小程序项目的结构</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">├── pages ······································ 【目录】存放所有的小程序页面</span><br><span class="line">│   │── index ···································· 【目录】index 页面</span><br><span class="line">│   │   ├── index.wxml ······························· 【文件】 index 页面的结构</span><br><span class="line">│   │   ├── index.js ································· 【文件】 index 页面的逻辑</span><br><span class="line">│   │   ├── index.json ······························· 【文件】 index 页面的配置</span><br><span class="line">│   │   └── index.wxss ······························· 【文件】 index 页面的样式</span><br><span class="line">│   └── logs ····································· 【目录】 logs 页面</span><br><span class="line">│       ├── logs.wxml ································ 【文件】 logs 页面的结构</span><br><span class="line">│       └── logs.js ·································· 【文件】 logs 页面的逻辑</span><br><span class="line">└── utils ······································ 【目录】 存放小程序中用到的工具函数</span><br><span class="line">├── app.js ····································· 【文件】 小程序逻辑</span><br><span class="line">├── app.json ··································· 【文件】 小程序的公共配置</span><br><span class="line">├── app.wxss ··································· 【文件】小程序公共样式表</span><br><span class="line">├── project.config.json ························ 【文件】 开发工具配置文件</span><br></pre></td></tr></table></figure>
+
+<p>说明：</p>
+<ul>
+<li><code>app.js</code> 是小程序的入口文件，运行小程序，第一个被运行的就是 <code>app.js</code></li>
+<li><code>app.json</code> 是小程序的全局配置文件，对小程序每个页面生效</li>
+<li><code>app.wxss</code> 是小程序的全局样式文件，对小程序每个页面生效</li>
+</ul>
+<p>注意：</p>
+<ul>
+<li>对于小程序运行而言，<code>app.js</code> 和 <code>app.json</code> 是必不可少的</li>
+<li>对于小程序页面而言， <code>.js</code> 和 <code>.html</code> 文件是必不可少的</li>
+</ul>
+<hr>
+<h5 id="二、小程序页面的结构"><a href="#二、小程序页面的结构" class="headerlink" title="二、小程序页面的结构"></a>二、小程序页面的结构</h5><h6 id="001-小程序页面和-Vue-组件的对比"><a href="#001-小程序页面和-Vue-组件的对比" class="headerlink" title="001 - 小程序页面和 Vue 组件的对比"></a>001 - 小程序页面和 <code>Vue</code> 组件的对比</h6><ul>
+<li>每个 <code>.vue</code> 文件，是由 <code>template</code> 模板结构、<code>script</code> 行为逻辑、<code>style</code> 样式三部分组成的</li>
+<li>每个小程序页面，是由 <code>.wxml</code> 结构、<code>.js</code> 逻辑文件、<code>.json</code> 配置、<code>.wxss</code> 样式表这四部分组成的</li>
+</ul>
+<p><img src="./images/2minavue.png" alt="小程序页面和 `Vue` 组件的对比"></p>
+<h6 id="002-小程序页面中每个文件的作用"><a href="#002-小程序页面中每个文件的作用" class="headerlink" title="002 - 小程序页面中每个文件的作用"></a>002 - 小程序页面中每个文件的作用</h6><ul>
+<li><code>.wxml</code> : 用来描述当前这个页面的标签结构，同时提供了类似于 <code>Vue</code> 中指令的语法</li>
+<li><code>.js</code> : 用来定义当前页面中用到的数据、交互逻辑和响应用户的操作</li>
+<li><code>.json</code> : 用来定义当前页面的个性化配置，例如，为每个页面单独配置顶部颜色、是否允许下拉刷新等</li>
+<li><code>.wxss</code> : 用来定义样式来美化当前的页面</li>
+</ul>
+<hr>
+<h5 id="三、创建小程序页面"><a href="#三、创建小程序页面" class="headerlink" title="三、创建小程序页面"></a>三、创建小程序页面</h5><ul>
+<li>在 <code>pages</code> 目录上右键，选择 “新建目录”，输入目录名称</li>
+<li>在新建的目录上，再次右键，选择 “新建 <code>page</code>” ，输入 <code>page</code> 名称</li>
+</ul>
+<p>注意：</p>
+<ul>
+<li>输入 <code>page</code> 名称以后，会自动创建四个文件</li>
+</ul>
+<hr>
+<h5 id="四、修改小程序项目的默认首页"><a href="#四、修改小程序项目的默认首页" class="headerlink" title="四、修改小程序项目的默认首页"></a>四、修改小程序项目的默认首页</h5><ul>
+<li>打开 <code>app.json</code> 全局配置文件，找到 <code>pages</code> 节点。这个 pages 节点是一个数组，存储了项目中所有页面的访问路径。其中，<code>pages</code> 数组中第一个页面路径，就是小程序项目的默认首页。</li>
+<li>所以只需要修改 pages 数组中路径的顺序，就可以可修改小程序的默认首页。</li>
+</ul>
+<hr>
+<h5 id="五、text-文本组件的用法"><a href="#五、text-文本组件的用法" class="headerlink" title="五、text 文本组件的用法"></a>五、text 文本组件的用法</h5><blockquote>
+<p>小程序提供了丰富的基础组件给开发者，开发者可以像搭积木一样，组合各种组件拼接称自己的小程序 <br /></p>
+<p>小程序中的组件，就像 <code>HTML</code> 中的 <code>div</code> 、<code>p</code>、<code>span</code> 等标签的作用一样，用于搭建页面的基础结构</p>
+</blockquote>
+<h6 id="001-text-组件的属性"><a href="#001-text-组件的属性" class="headerlink" title="001 - text 组件的属性"></a>001 - text 组件的属性</h6><table>
+<thead>
+<tr>
+<th align="center">属性</th>
+<th align="center">类型</th>
+<th align="center">默认值</th>
+<th align="center">必填</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">selectable</td>
+<td align="center">boolean</td>
+<td align="center">false</td>
+<td align="center">否</td>
+<td align="center">文本是否可选</td>
+</tr>
+<tr>
+<td align="center">space</td>
+<td align="center">string</td>
+<td align="center">.</td>
+<td align="center">否</td>
+<td align="center">显示连续空格，可选参数：<code>ensp</code>、<code>emsp</code>、<code>nbsp</code></td>
+</tr>
+<tr>
+<td align="center">decode</td>
+<td align="center">boolean</td>
+<td align="center">false</td>
+<td align="center">否</td>
+<td align="center">是否解码</td>
+</tr>
+</tbody></table>
+<p><strong>注： <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/component/text.html">text 组件详细文档</a></strong></p>
+<ul>
+<li><code>text</code> 组件相当于行内标签、在同一行显示</li>
+<li>除了文本节点以外的其他节点都无法长按选中</li>
+</ul>
+<h6 id="002-代码案例"><a href="#002-代码案例" class="headerlink" title="002 - 代码案例"></a>002 - 代码案例</h6><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">view</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 长按文本是否可选 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">text</span> <span class="attr">selectable</span>=<span class="string">&quot;true&quot;</span>&gt;</span>web<span class="tag">&lt;/<span class="name">text</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">view</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 显示连续空格的方式 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">view</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">text</span> <span class="attr">space</span>=<span class="string">&quot;ensp&quot;</span>&gt;</span>H a c k<span class="tag">&lt;/<span class="name">text</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">view</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">text</span> <span class="attr">space</span>=<span class="string">&quot;emsp&quot;</span>&gt;</span>H a c k<span class="tag">&lt;/<span class="name">text</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">view</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">text</span> <span class="attr">space</span>=<span class="string">&quot;nbsp&quot;</span>&gt;</span>H a c k<span class="tag">&lt;/<span class="name">text</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">view</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">text</span>&gt;</span>skyblue<span class="tag">&lt;/<span class="name">text</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">view</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 是否解码 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">text</span> <span class="attr">decode</span>=<span class="string">&quot;true&quot;</span>&gt;</span><span class="symbol">&amp;nbsp;</span> <span class="symbol">&amp;lt;</span> <span class="symbol">&amp;gt;</span> <span class="symbol">&amp;amp;</span> <span class="symbol">&amp;apos;</span> <span class="symbol">&amp;ensp;</span> <span class="symbol">&amp;emsp;</span><span class="tag">&lt;/<span class="name">text</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h5 id="六、view-视图容器组件的用法"><a href="#六、view-视图容器组件的用法" class="headerlink" title="六、view 视图容器组件的用法"></a>六、view 视图容器组件的用法</h5><blockquote>
+<p>View 视图容器， 类似于 HTML 中的 div</p>
+</blockquote>
+<h6 id="001-组件的属性"><a href="#001-组件的属性" class="headerlink" title="001 - 组件的属性"></a>001 - 组件的属性</h6><p><img src="./images/2view.png"></p>
+<p><strong>注：<a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/component/view.html">View 的详细文档</a></strong></p>
+<h6 id="002-代码案例-1"><a href="#002-代码案例-1" class="headerlink" title="002 - 代码案例"></a>002 - 代码案例</h6><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">view</span> <span class="attr">hover-class</span>=<span class="string">&quot;box1&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">view</span></span></span><br><span class="line"><span class="tag">		<span class="attr">hover-stop-propagation</span>=<span class="string">&quot;true&quot;</span></span></span><br><span class="line"><span class="tag">		<span class="attr">hover-class</span>=<span class="string">&quot;box&quot;</span></span></span><br><span class="line"><span class="tag">		<span class="attr">hover-start-time</span>=<span class="string">&quot;2000&quot;</span></span></span><br><span class="line"><span class="tag">		<span class="attr">hover-stay-time</span>=<span class="string">&quot;3000&quot;</span></span></span><br><span class="line"><span class="tag">	&gt;</span></span><br><span class="line">		box1</span><br><span class="line">	<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h5 id="七、button-按钮组件的用法"><a href="#七、button-按钮组件的用法" class="headerlink" title="七、button 按钮组件的用法"></a>七、button 按钮组件的用法</h5><h6 id="001-组件的属性-1"><a href="#001-组件的属性-1" class="headerlink" title="001 - 组件的属性"></a>001 - 组件的属性</h6><table>
+<thead>
+<tr>
+<th align="center">属性名</th>
+<th align="center">类型</th>
+<th align="center">默认值</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">size</td>
+<td align="center">String</td>
+<td align="center">default</td>
+<td align="center">按钮的大小</td>
+</tr>
+<tr>
+<td align="center">type</td>
+<td align="center">String</td>
+<td align="center">default</td>
+<td align="center">按钮的样式类型</td>
+</tr>
+<tr>
+<td align="center">plain</td>
+<td align="center">Boolean</td>
+<td align="center">false</td>
+<td align="center">按钮是否镂空，背景色透明</td>
+</tr>
+<tr>
+<td align="center">disabled</td>
+<td align="center">Boolean</td>
+<td align="center">false</td>
+<td align="center">是否按钮</td>
+</tr>
+<tr>
+<td align="center">loading</td>
+<td align="center">Boolean</td>
+<td align="center">false</td>
+<td align="center">名称是否带 loading t 图标</td>
+</tr>
+</tbody></table>
+<p><strong>注：<a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/component/button.html">Button 组件的详细文档</a></strong></p>
+<ul>
+<li><code>button</code> 组件默认独占一行，设置 <code>size</code> 为 <code>mini</code> 时可以在一行显示多个</li>
+</ul>
+<h6 id="002-案例代码"><a href="#002-案例代码" class="headerlink" title="002 - 案例代码"></a>002 - 案例代码</h6><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">size</span>=<span class="string">&quot;mini&quot;</span> <span class="attr">type</span>=<span class="string">&quot;primary&quot;</span>&gt;</span>前端<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">size</span>=<span class="string">&quot;mini&quot;</span> <span class="attr">type</span>=<span class="string">&quot;default&quot;</span> <span class="attr">disabled</span>=<span class="string">&quot;true&quot;</span>&gt;</span>前端<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">size</span>=<span class="string">&quot;mini&quot;</span> <span class="attr">type</span>=<span class="string">&quot;warn&quot;</span> <span class="attr">loading</span>=<span class="string">&quot;true&quot;</span>&gt;</span>前端<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h5 id="八、input-文本输入框组件的用法"><a href="#八、input-文本输入框组件的用法" class="headerlink" title="八、input 文本输入框组件的用法"></a>八、input 文本输入框组件的用法</h5><h6 id="001-input-组件属性"><a href="#001-input-组件属性" class="headerlink" title="001 - input 组件属性"></a>001 - input 组件属性</h6><table>
+<thead>
+<tr>
+<th align="center">属性名</th>
+<th align="center">类型</th>
+<th align="center">默认值</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">value</td>
+<td align="center">String</td>
+<td align="center">.</td>
+<td align="center">输入框的初始内容</td>
+</tr>
+<tr>
+<td align="center">type</td>
+<td align="center">String</td>
+<td align="center">‘text’</td>
+<td align="center">input 的类型</td>
+</tr>
+<tr>
+<td align="center">password</td>
+<td align="center">Boolean</td>
+<td align="center">false</td>
+<td align="center">是否是密码类型</td>
+</tr>
+<tr>
+<td align="center">placeholder</td>
+<td align="center">Sting</td>
+<td align="center">.</td>
+<td align="center">输入框为空时占位符</td>
+</tr>
+<tr>
+<td align="center">disabled</td>
+<td align="center">Boolean</td>
+<td align="center">false</td>
+<td align="center">是否禁用</td>
+</tr>
+<tr>
+<td align="center">maxlength</td>
+<td align="center">Number</td>
+<td align="center">140</td>
+<td align="center">最大输入长度，设置 -1 时不限制最大长度</td>
+</tr>
+</tbody></table>
+<p><strong>注：<a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/component/input.html">input 组件的详细文档</a></strong></p>
+<h6 id="002-案例代码-1"><a href="#002-案例代码-1" class="headerlink" title="002 - 案例代码"></a>002 - 案例代码</h6><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">placeholder</span>=<span class="string">&quot;111&quot;</span> <span class="attr">type</span>=<span class="string">&quot;idcard&quot;</span> <span class="attr">placeholder-style</span>=<span class="string">&quot;color: skyblue&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h5 id="九、image-图片组件的用法"><a href="#九、image-图片组件的用法" class="headerlink" title="九、image 图片组件的用法"></a>九、image 图片组件的用法</h5><h6 id="001-image-组件常用的属性"><a href="#001-image-组件常用的属性" class="headerlink" title="001 - image 组件常用的属性"></a>001 - image 组件常用的属性</h6><ul>
+<li><code>src</code> – 支持本地和网络上的图片</li>
+<li><code>mode</code> – 指定图片的裁剪、缩放的模式</li>
+</ul>
+<p><strong>注意：<a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/component/image.html">image 图片组件详细文档</a></strong></p>
+<ul>
+<li>image 组件默认的宽度是 <code>300px</code> 、<code>高度是225px</code></li>
+<li>image 组件中二维码/小程序码图片不支持长按识别</li>
+</ul>
+<h6 id="002-案例代码-2"><a href="#002-案例代码-2" class="headerlink" title="002 - 案例代码"></a>002 - 案例代码</h6><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">image</span> <span class="attr">src</span>=<span class="string">&quot;/assets/5.jpg&quot;</span> <span class="attr">mode</span>=<span class="string">&quot;aspectFit&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">image</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">image</span></span></span><br><span class="line"><span class="tag">	<span class="attr">src</span>=<span class="string">&quot;https://wx.qlogo.cn/mmhead/Q3auHgzwzM7teJKyb7Oicw6x2rDiaD5BkDPFP2kccFO6a566TzzUyUgA/0&quot;</span></span></span><br><span class="line"><span class="tag">	<span class="attr">mode</span>=<span class="string">&quot;widthFix&quot;</span></span></span><br><span class="line"><span class="tag">&gt;</span><span class="tag">&lt;/<span class="name">image</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h5 id="十、wxss-中常用的样式选择器"><a href="#十、wxss-中常用的样式选择器" class="headerlink" title="十、wxss 中常用的样式选择器"></a>十、<code>wxss</code> 中常用的样式选择器</h5><blockquote>
+<p><code>WXSS</code> 是一套样式语言，用来决定 <code>WXML</code> 的组件应该怎么显示</p>
+</blockquote>
+<h6 id="001-初始-wxss"><a href="#001-初始-wxss" class="headerlink" title="001 - 初始 wxss"></a>001 - 初始 <code>wxss</code></h6><ul>
+<li><code>wxss</code> 具有 <code>css</code> 大部分特性</li>
+<li><code>wxss</code> 对 <code>css</code> 进行了扩充以及修改，以适应微信小程序的开发</li>
+</ul>
+<p><strong>注：<a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxss.html">wxss 详细文档</a></strong></p>
+<h6 id="002-wxss-和-css-的区别"><a href="#002-wxss-和-css-的区别" class="headerlink" title="002 - wxss 和 css 的区别"></a>002 - <code>wxss</code> 和 <code>css</code> 的区别</h6><ul>
+<li>尺寸单位</li>
+<li>样式导入</li>
+</ul>
+<p><img src="./images/2wxss.png" alt="`wxss` 和 `css` 的区别"></p>
+<hr>
+<h5 id="十一、什么是-wxss"><a href="#十一、什么是-wxss" class="headerlink" title="十一、什么是 wxss"></a>十一、什么是 <code>wxss</code></h5><h6 id="001-wxss-目前支持的选择器"><a href="#001-wxss-目前支持的选择器" class="headerlink" title="001 - wxss 目前支持的选择器"></a>001 - <code>wxss</code> 目前支持的选择器</h6><ul>
+<li>标签选择器</li>
+<li>id 选择器</li>
+<li>class 选择器</li>
+<li>伪类选择器</li>
+<li>data-*属性选择器</li>
+<li>:nth-of-type() 等常用的 css3 选择器</li>
+<li>其他…</li>
+</ul>
+<p><strong>注： <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxss.html">wxss 详细文档</a></strong></p>
+<h6 id="002-案例代码-3"><a href="#002-案例代码-3" class="headerlink" title="002 - 案例代码"></a>002 - 案例代码</h6><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">view</span> &#123;</span><br><span class="line">	<span class="attribute">font-size</span>: <span class="number">12px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-id">#box</span> &#123;</span><br><span class="line">	<span class="attribute">color</span>: skyblue;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">	<span class="attribute">color</span>: lightcoral;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.box1</span><span class="selector-pseudo">::before</span> &#123;</span><br><span class="line">	<span class="attribute">content</span>: <span class="string">&#x27;加油&#x27;</span>;</span><br><span class="line">	<span class="attribute">color</span>: lightgreen;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">view</span><span class="selector-pseudo">:nth-of-type(4)</span> &#123;</span><br><span class="line">	<span class="attribute">color</span>: lightseagreen;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-attr">[data-color=<span class="string">&#x27;pink&#x27;</span>]</span> &#123;</span><br><span class="line">	<span class="attribute">color</span>: pink;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h5 id="十二、什么是-rpx-尺寸单位"><a href="#十二、什么是-rpx-尺寸单位" class="headerlink" title="十二、什么是 rpx 尺寸单位"></a>十二、什么是 <code>rpx</code> 尺寸单位</h5><blockquote>
+<p><code>rpx</code>： 是微信小程序独有的，解决屏幕自适应的尺寸单位</p>
+</blockquote>
+<ul>
+<li>可以根据屏幕宽度进行自适应，不论屏幕大小，规定屏幕宽为 <code>750rpx</code></li>
+<li>通过 <code>rpx</code> 设置元素和字体的大小，小程序在<strong>不同尺寸</strong>的屏幕上，<strong>可以实现自动适配</strong></li>
+</ul>
+<p><strong>注：<a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxss.html">rpx 单位详细文档</a></strong></p>
+<hr>
+<h5 id="十二、rpx-与-px-之间的换算"><a href="#十二、rpx-与-px-之间的换算" class="headerlink" title="十二、rpx 与 px 之间的换算"></a>十二、<code>rpx</code> 与 <code>px</code> 之间的换算</h5><p>以 <code>iPhone6</code> 为例，<code>iPhone6</code> 的屏幕宽度为 <code>375px</code> ，共有 750 个物理像素，则 <code>750rpx</code> = <code>375px</code> = <code>750</code> 物理像素</p>
+<p>也就是 <strong><code>1rpx</code> = <code>0.5px</code> = <code>1 物理像素</code></strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">设备</th>
+<th align="center"><code>rpx</code> 换算 <code>px</code> (屏幕宽度/750)</th>
+<th align="center"><code>px</code> 换算 <code>rpx</code> (750/屏幕宽度)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>iPhone5</code></td>
+<td align="center"><code>1rpx</code> = 0.42<code>px</code></td>
+<td align="center"><code>1px</code> = <code>2.34rpx</code></td>
+</tr>
+<tr>
+<td align="center"><code>iPhone6</code></td>
+<td align="center"><code>1rpx</code> = <code>0.5px</code></td>
+<td align="center"><code>1px</code> = <code>2rpx</code></td>
+</tr>
+<tr>
+<td align="center"><code>iPhone6 Plus</code></td>
+<td align="center"><code>1rpx</code> = <code>0.552px</code></td>
+<td align="center"><code>1px</code> = <code>1.81rpx</code></td>
+</tr>
+</tbody></table>
+<p>那么也就是说：如果在<code>iPhone6</code>上，</p>
+<p>如果要绘制宽<code>100px</code>，高<code>20px</code>的盒子，换算成<code>rpx</code>单位，</p>
+<p>宽高分别为 <code>200rpx</code> 和 <code>40rpx</code></p>
+<p><strong>注：<a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxss.html">rpx 单位详细文档</a></strong></p>
+<hr>
+<h5 id="十二、rpx-和-iPhone6-设计稿的关系"><a href="#十二、rpx-和-iPhone6-设计稿的关系" class="headerlink" title="十二、rpx 和 iPhone6 设计稿的关系"></a>十二、<code>rpx</code> 和 <code>iPhone6</code> 设计稿的关系</h5><blockquote>
+<p>开发微信小程序时设计师可以用 <code>iPhone6</code> 作为视觉稿的标准。</p>
+</blockquote>
+<p>官方建议：</p>
+<p>开发微信小程序时，设计师可以用 <code>iPhone6</code> 作为视觉稿的标准。</p>
+<p>如果要根据 <code>iPhone6</code> 的设计稿，绘制小程序页面，可以直接把单位从 <code>px</code> 替换为 <code>rpx</code> 。</p>
+<p>例如，假设 <code>iPhone6</code> 设计稿上，要绘制一个 宽高为 <code>200px</code> 的盒子，换算为 <code>rpx</code> 为 <code>200rpx</code>。</p>
+<hr>
+<h5 id="十三、-import-样式导入"><a href="#十三、-import-样式导入" class="headerlink" title="十三、 @import 样式导入"></a>十三、 <code>@import</code> 样式导入</h5><h6 id="001-语法解释"><a href="#001-语法解释" class="headerlink" title="001 - 语法解释"></a>001 - 语法解释</h6><ul>
+<li>使用 <code>@import</code> 语句可以导入外联样式表</li>
+<li>语法格式：<code>@import &quot;wxss 样式表文件的相对路径&quot;</code></li>
+</ul>
+<h6 id="002-案例代码-4"><a href="#002-案例代码-4" class="headerlink" title="002 - 案例代码"></a>002 - 案例代码</h6><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@import</span> <span class="string">&#x27;/assets/common/common.wxss&#x27;</span>;</span><br><span class="line"><span class="comment">/* @import &quot;../../assets/common/common.wxss&quot;; */</span></span><br><span class="line"></span><br><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">	<span class="attribute">width</span>: <span class="number">375</span>rpx;</span><br><span class="line">	<span class="attribute">height</span>: <span class="number">375</span>rpx;</span><br><span class="line">	<span class="attribute">background-color</span>: skyblue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h5 id="十四、-全局样式和局部样式"><a href="#十四、-全局样式和局部样式" class="headerlink" title="十四、 全局样式和局部样式"></a>十四、 全局样式和局部样式</h5><h6 id="001-全局样式"><a href="#001-全局样式" class="headerlink" title="001 - 全局样式"></a>001 - 全局样式</h6><ul>
+<li>定义在 <code>app.wxss</code> 中的样式为全局样式，作用于每一个页面。</li>
+</ul>
+<h6 id="002-局部样式"><a href="#002-局部样式" class="headerlink" title="002 - 局部样式"></a>002 - 局部样式</h6><ul>
+<li>在 <code>page</code> 的 <code>wxss</code> 文件中定义的样式为局部样式，只作用在对应的页面，并会覆盖 <code>app.wxss</code> 中相同的选择器。</li>
+</ul>
+<p><strong>注意：当局部样式的权重大于或等于全局样式的权重时，才会覆盖全局的样式效果！</strong></p>
+<p><strong>注：<a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxss.html">wxss 详细文档</a></strong></p>
+<hr>
+<h5 id="十五、app-json-配置文件"><a href="#十五、app-json-配置文件" class="headerlink" title="十五、app.json 配置文件"></a>十五、<code>app.json</code> 配置文件</h5><blockquote>
+<p>小程序根目录下的 <code>app.json</code> 文件用来对微信小程序进行全局配置，</p>
+<p>它决定了页面文件的路径、窗口表现、设置网络超时时间、设置多 tab 等。</p>
+</blockquote>
+<ol>
+<li>在 <code>app.json</code> 配置文件中，最主要的配置节点是：</li>
+</ol>
+<ul>
+<li><code>pages</code> 数组：配置小程序的页面路径</li>
+<li><code>window</code> 对象：用于设置小程序的状态栏、导航条、标题、窗口背景色</li>
+<li><code>tabBar</code> 对象：配置小程序的 tab 栏效果</li>
+</ul>
+<p><strong>注：<a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/config.html#%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AE">全局配置详细文档</a></strong></p>
+<hr>
+<h5 id="十六、pages-数组的用法"><a href="#十六、pages-数组的用法" class="headerlink" title="十六、pages 数组的用法"></a>十六、<code>pages</code> 数组的用法</h5><blockquote>
+<p><code>app.json</code> 中的 <code>pages</code> 数组，用来配置小程序的页面路径</p>
+</blockquote>
+<h6 id="001-基础配置"><a href="#001-基础配置" class="headerlink" title="001 - 基础配置"></a>001 - 基础配置</h6><ul>
+<li><code>pages</code> 用于指定小程序由哪些页面组成，每一项都对应一个页面的 路径+文件名 信息。</li>
+<li>文件名不需要写文件后缀，框架会自动去寻找对应位置的 <code>.json</code>、 <code>.js</code>、 <code>.wxml</code> 和 <code>.wxss</code> 四个文件进行处理。</li>
+</ul>
+<h6 id="002-创建页面的另一种方式"><a href="#002-创建页面的另一种方式" class="headerlink" title="002 - 创建页面的另一种方式"></a>002 - 创建页面的另一种方式</h6><ul>
+<li>打开 <code>app.json</code> –&gt; <code>pages</code> 数组节点 –&gt; 新增页面路径并保存 –&gt; 自动创建路径对应的页面</li>
+</ul>
+<h6 id="003-设置项目的首页"><a href="#003-设置项目的首页" class="headerlink" title="003 - 设置项目的首页"></a>003 - 设置项目的首页</h6><ul>
+<li>打开 <code>app.json</code> -&gt; <code>pages</code> 数组节点</li>
+<li>按需调整数组中路径的顺序，即可修改默认首页</li>
+</ul>
+<p><strong>注意事项：</strong></p>
+<ul>
+<li>数组的第一项代表小程序的小程序的初始页面也就是首页</li>
+<li>小程序中新增/减少页面，都需要对 pages 数组进行修改，否则在运行小程序时就会报错</li>
+</ul>
+<p><strong>注：<a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/config.html#%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AE">全局配置详细文档</a></strong></p>
+<hr>
+<h5 id="十七、小程序窗口的组成部分"><a href="#十七、小程序窗口的组成部分" class="headerlink" title="十七、小程序窗口的组成部分"></a>十七、小程序窗口的组成部分</h5><p><strong>常见的属性配置： <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/page.html">常见的属性配置</a></strong></p>
+<p><img src="./images/2xcxwindow.png"></p>
+<h5 id="十八、设置导航栏标题文字内容"><a href="#十八、设置导航栏标题文字内容" class="headerlink" title="十八、设置导航栏标题文字内容"></a>十八、设置导航栏标题文字内容</h5><ul>
+<li><code>app.json</code> –&gt; <code>window</code> –&gt; <code>navigationBarTitleText</code></li>
+<li>将属性值修改即可</li>
+</ul>
+<h5 id="十九、设置导航栏背景色"><a href="#十九、设置导航栏背景色" class="headerlink" title="十九、设置导航栏背景色"></a>十九、设置导航栏背景色</h5><ul>
+<li><code>app.json</code> –&gt; <code>window</code> –&gt; <code>navigationBarBackgroundColor</code></li>
+<li>将属性值修改为指定的颜色就可以</li>
+</ul>
+<h5 id="二十、设置导航栏标题颜色"><a href="#二十、设置导航栏标题颜色" class="headerlink" title="二十、设置导航栏标题颜色"></a>二十、设置导航栏标题颜色</h5><ul>
+<li><code>app.json</code> –&gt; <code>window</code> –&gt; <code>navigationBarTextStyle</code></li>
+<li>将属性值修改为指定的颜色就可以</li>
+</ul>
+<h5 id="二十一、全局开启下拉刷新功能"><a href="#二十一、全局开启下拉刷新功能" class="headerlink" title="二十一、全局开启下拉刷新功能"></a>二十一、全局开启下拉刷新功能</h5><blockquote>
+<p>通过手指在屏幕上的下拉滑动操作，从而重新加载页面数据的行为</p>
+</blockquote>
+<ul>
+<li><code>app.json</code> –&gt; <code>window</code> –&gt; 把 <code>enablePullDownRefresh</code> 的值设置为 true</li>
+</ul>
+<h5 id="二十二、设置下拉刷新窗口的背景色"><a href="#二十二、设置下拉刷新窗口的背景色" class="headerlink" title="二十二、设置下拉刷新窗口的背景色"></a>二十二、设置下拉刷新窗口的背景色</h5><blockquote>
+<p>当全局开启下拉刷新功能之后，默认的窗口背景为白色</p>
+</blockquote>
+<ul>
+<li><code>app.json</code> -&gt; <code>window</code> -&gt; <code>backgroundColor</code></li>
+</ul>
+<h5 id="二十三、设置下拉-loading-的样式"><a href="#二十三、设置下拉-loading-的样式" class="headerlink" title="二十三、设置下拉 loading 的样式"></a>二十三、设置下拉 loading 的样式</h5><blockquote>
+<p>当全局开启下拉刷新功能之后，默认窗口的 loading 样式为白色</p>
+</blockquote>
+<ul>
+<li><code>app.json</code> –&gt; <code>window</code> –&gt; <code>backgroundTextStyle</code></li>
+</ul>
+<h5 id="二十四、设置上拉触底的距离"><a href="#二十四、设置上拉触底的距离" class="headerlink" title="二十四、设置上拉触底的距离"></a>二十四、设置上拉触底的距离</h5><blockquote>
+<p>手指在屏幕上的上拉滑动操作，从而加载更多数据的行为</p>
+</blockquote>
+<ul>
+<li><code>app.json</code> –&gt; <code>window</code> –&gt; <code>onReachBottomDistance</code></li>
+</ul>
+<p><strong>注意： 默认距离为 <code>50px</code>，如果没有特殊需求，建议使用默认值即可</strong></p>
+<h5 id="二十五、tabBar-的概念"><a href="#二十五、tabBar-的概念" class="headerlink" title="二十五、tabBar 的概念"></a>二十五、<code>tabBar</code> 的概念</h5><blockquote>
+<p><code>tabBar</code> 是移动端应用常见的页面效果，用于实现多页面的快速切换；小程序中通常将其分为底部 <code>tabBar</code> 和顶部 <code>tabBar</code></p>
+</blockquote>
+<p><strong>注意：<code>tabBar</code> 中，只能配置最少 2 个、最多 5 个 tab 页签，当渲染顶部 <code>tabBar</code> 的时候，不显示 <code>icon</code>，只显示文本</strong></p>
+<p><strong>注： <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html">tabbar 详细文档</a></strong></p>
+<p><img src="./images/2tabbarb.png"> <img src="./images/2tabbart.png"></p>
+<h5 id="二十六、tabBar-的组成部分"><a href="#二十六、tabBar-的组成部分" class="headerlink" title="二十六、tabBar 的组成部分"></a>二十六、<code>tabBar</code> 的组成部分</h5><ul>
+<li><code>backgroundColor</code>：导航条背景色</li>
+<li><code>selectedIconPath</code>：选中时的图片路径</li>
+<li><code>borderStyle</code>：<code>tabBar</code>上边框的颜色</li>
+<li><code>iconPath</code>：未选中时的图片路径</li>
+<li><code>selectedColor</code>：<code>tab</code> 上的文字选中时的颜色</li>
+<li><code>color</code>：<code>tab</code> 上的文字默认（未选中）颜色</li>
+</ul>
+<p><img src="./images/2tabbar.png"></p>
+<h5 id="二十七、tabBar-节点的配置项"><a href="#二十七、tabBar-节点的配置项" class="headerlink" title="二十七、tabBar 节点的配置项"></a>二十七、<code>tabBar</code> 节点的配置项</h5><h6 id="001-tabBar-节点的配置项"><a href="#001-tabBar-节点的配置项" class="headerlink" title="001 - tabBar 节点的配置项"></a>001 - <code>tabBar</code> 节点的配置项</h6><table>
+<thead>
+<tr>
+<th align="center">属性</th>
+<th align="center">类型</th>
+<th align="center">必填</th>
+<th align="center">默认值</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">color</td>
+<td align="center">HexColor</td>
+<td align="center">是</td>
+<td align="center">.</td>
+<td align="center">tab 上的文字默认颜色，仅支持十六进制颜色</td>
+</tr>
+<tr>
+<td align="center">selectedColor</td>
+<td align="center">HexColor</td>
+<td align="center">是</td>
+<td align="center">.</td>
+<td align="center">tab 上的文字选中时的颜色，仅支持十六进制颜色</td>
+</tr>
+<tr>
+<td align="center">backgroundColor</td>
+<td align="center">HexColor</td>
+<td align="center">是</td>
+<td align="center">.</td>
+<td align="center">tab 的背景色，仅支持十六进制颜色</td>
+</tr>
+<tr>
+<td align="center">borderStyle</td>
+<td align="center">string</td>
+<td align="center">否</td>
+<td align="center">black</td>
+<td align="center">tabBar 上边框的颜色， 仅支持 <code>black</code> / <code>white</code></td>
+</tr>
+<tr>
+<td align="center">list</td>
+<td align="center">Array</td>
+<td align="center">是</td>
+<td align="center">.</td>
+<td align="center">tab 的列表，详见 <code>list</code> 属性说明，最少 2 个、最多 5 个 tab</td>
+</tr>
+<tr>
+<td align="center">position</td>
+<td align="center">string</td>
+<td align="center">否</td>
+<td align="center">bottom</td>
+<td align="center">tabBar 的位置，仅支持 <code>bottom</code>/ <code>top</code></td>
+</tr>
+<tr>
+<td align="center">custom</td>
+<td align="center">boolean</td>
+<td align="center">否</td>
+<td align="center">false</td>
+<td align="center">自定义 tabBar</td>
+</tr>
+</tbody></table>
+<h6 id="002-list-节点的配置项"><a href="#002-list-节点的配置项" class="headerlink" title="002 - list 节点的配置项"></a>002 - list 节点的配置项</h6><table>
+<thead>
+<tr>
+<th align="center">属性</th>
+<th align="center">类型</th>
+<th align="center">必填</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">pagePath</td>
+<td align="center">string</td>
+<td align="center">是</td>
+<td align="center">页面路径，必须在 pages 中先定义</td>
+</tr>
+<tr>
+<td align="center">text</td>
+<td align="center">string</td>
+<td align="center">是</td>
+<td align="center">tab 上按钮文字</td>
+</tr>
+<tr>
+<td align="center">iconPath</td>
+<td align="center">string</td>
+<td align="center">否</td>
+<td align="center">图片路径，icon 大小限制为 40kb，建议尺寸为 81px * 81px</td>
+</tr>
+<tr>
+<td align="center">selectedIconPath</td>
+<td align="center">string</td>
+<td align="center">否</td>
+<td align="center">选中时的图片路径，icon 大小限制为 40kb，建议尺寸为 81px * 81px</td>
+</tr>
+</tbody></table>
+<p><strong>注意：</strong></p>
+<ul>
+<li><strong>都不支持网络图片</strong></li>
+<li><strong>当 position 为 top 时，不显示 icon。</strong></li>
+</ul>
+<h5 id="二十八、页面配置"><a href="#二十八、页面配置" class="headerlink" title="二十八、页面配置"></a>二十八、页面配置</h5><h6 id="001-页面配置和局部配置的关系"><a href="#001-页面配置和局部配置的关系" class="headerlink" title="001 - 页面配置和局部配置的关系"></a>001 - 页面配置和局部配置的关系</h6><ul>
+<li><code>app.json</code> 中的 <code>window</code> 节点，可以全局配置小程序中每个页面的窗口表现；</li>
+<li>如果某些小程序页面，想要拥有特殊的窗口表现，此时，“页面级别的 <code>.json</code> 配置文件”就可以实现这种需求；</li>
+</ul>
+<p><strong>注意：页面级别配置优先于全局配置生效</strong></p>
+<h6 id="002-页面配置属性"><a href="#002-页面配置属性" class="headerlink" title="002 - 页面配置属性"></a>002 - 页面配置属性</h6><p><strong>注： <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/page.html">页面配置详细文档</a></strong></p>
+<h5 id="二十九、生命周期的概念"><a href="#二十九、生命周期的概念" class="headerlink" title="二十九、生命周期的概念"></a>二十九、生命周期的概念</h5><blockquote>
+<p>生命周期（Life Cycle）是指一个对象从 创建 -&gt; 运行 -&gt; 销毁 的整个阶段，强调的是一个时间段。</p>
+</blockquote>
+<h6 id="001-小程序的生命周期"><a href="#001-小程序的生命周期" class="headerlink" title="001 - 小程序的生命周期"></a>001 - 小程序的生命周期</h6><ul>
+<li>小程序的启动，表示生命周期的开始</li>
+<li>小程序的关闭，表示生命周期的结束</li>
+<li>中间小程序运行的过程，就是小程序的生命周期</li>
+</ul>
+<h6 id="002-小程序生命周期的两种类型"><a href="#002-小程序生命周期的两种类型" class="headerlink" title="002 - 小程序生命周期的两种类型"></a>002 - 小程序生命周期的两种类型</h6><ul>
+<li>应用生命周期：特指小程序从启动 –&gt; 运行 –&gt; 销毁的过程；</li>
+<li>页面生命周期：特指小程序中，每个页面的加载 –&gt; 渲染 –&gt; 销毁的过程；</li>
+</ul>
+<p><strong>注意：页面的生命周期范围较小，应用程序的生命周期范围较大</strong></p>
+<p><img src="./images/2LifeCycle.png" alt="小程序的生命周期"></p>
+<h5 id="三十-、小程序的生命周期函数"><a href="#三十-、小程序的生命周期函数" class="headerlink" title="三十 、小程序的生命周期函数"></a>三十 、小程序的生命周期函数</h5><blockquote>
+<p>小程序框架提供的内置函数，会伴随着生命周期，自动按次序执行</p>
+</blockquote>
+<ol>
+<li>生命周期函数的作用：</li>
+</ol>
+<p>允许程序员在特定的生命周期时间点上，执行某些特定的操作。例如，页面刚加载的时候，在生命周期函数中自动发起数据请求，获取当前页面的数据；</p>
+<p><strong>注意：生命周期强调的是时间段，生命周期函数强调的是时间点。</strong></p>
+<h5 id="三十一、应用生命周期函数"><a href="#三十一、应用生命周期函数" class="headerlink" title="三十一、应用生命周期函数"></a>三十一、应用生命周期函数</h5><h6 id="001-小程序生命周期的分类"><a href="#001-小程序生命周期的分类" class="headerlink" title="001 - 小程序生命周期的分类"></a>001 - 小程序生命周期的分类</h6><ul>
+<li>应用生命周期函数</li>
+<li>页面生命周期函数</li>
+</ul>
+<h6 id="002-应用生命周期"><a href="#002-应用生命周期" class="headerlink" title="002 - 应用生命周期"></a>002 - 应用生命周期</h6><ul>
+<li><code>app.js</code> 是小程序执行的入口文件，在 <code>app.js</code> 中必须调用 <code>App()</code> 函数，且只能调用一次。其中，<code>App()</code> 函数是用来注册并执行小程序的。</li>
+<li><code>App(Object)</code> 函数接收一个 <code>Object</code> 参数，可以通过这个 <code>Object</code> 参数，指定小程序的生命周期函数。</li>
+</ul>
+<p><code>app.js</code> 代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">App(&#123;</span><br><span class="line"></span><br><span class="line">  &#x2F;**</span><br><span class="line">   * 当小程序初始化完成时，会触发 onLaunch（全局只触发一次）</span><br><span class="line">   *&#x2F;</span><br><span class="line">  onLaunch: function () &#123; &#125;,</span><br><span class="line"></span><br><span class="line">  &#x2F;**</span><br><span class="line">   * 当小程序启动，或从后台进入前台显示，会触发 onShow</span><br><span class="line">   *&#x2F;</span><br><span class="line">  onShow: function (options) &#123; &#125;,</span><br><span class="line"></span><br><span class="line">  &#x2F;**</span><br><span class="line">   * 当小程序从前台进入后台，会触发 onHide</span><br><span class="line">   *&#x2F;</span><br><span class="line">  onHide: function () &#123; &#125;,</span><br><span class="line"></span><br><span class="line">  &#x2F;**</span><br><span class="line">   * 当小程序发生脚本错误，或者 api 调用失败时，会触发 onError 并带上错误信息</span><br><span class="line">   *&#x2F;</span><br><span class="line">  onError: function (msg) &#123; &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h5 id="三十二、页面生命周期函数"><a href="#三十二、页面生命周期函数" class="headerlink" title="三十二、页面生命周期函数"></a>三十二、页面生命周期函数</h5><ul>
+<li>每个小程序页面，必须拥有自己的 <code>.js</code> 文件，且必须调用 <code>Page()</code> 函数，否则报错。其中 <code>Page()</code> 函数用来注册小程序页面。</li>
+<li><code>Page(Object)</code> 函数接收一个 <code>Object</code> 参数，可以通过这个 <code>Object</code> 参数，指定页面的生命周期函数。</li>
+</ul>
+<p>页面生命周期.js</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//index.js</span></span><br><span class="line"><span class="comment">//获取应用实例</span></span><br><span class="line"><span class="keyword">const</span> app = getApp()</span><br><span class="line"></span><br><span class="line">Page(&#123;</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 页面的初始数据</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	data: &#123;&#125;,</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 生命周期函数--监听页面加载</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	onLoad: <span class="function"><span class="keyword">function</span> (<span class="params">options</span>) </span>&#123;&#125;,</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 生命周期函数--监听页面初次渲染完成</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	onReady: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;,</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 生命周期函数--监听页面显示</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	onShow: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;,</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 生命周期函数--监听页面隐藏</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	onHide: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;,</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 生命周期函数--监听页面卸载</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	onUnload: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;,</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 页面相关事件处理函数--监听用户下拉动作</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	onPullDownRefresh: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;,</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 页面上拉触底事件的处理函数</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	onReachBottom: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;,</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 用户点击右上角分享</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	onShareAppMessage: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/projects_url">项目</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%9F%BA%E7%A1%80-%E7%AC%AC%E4%BA%8C%E5%A4%A9"><span class="toc-number">1.</span> <span class="toc-text">小程序基础 第二天</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%80%E3%80%81-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%A1%B9%E7%9B%AE%E7%9A%84%E7%BB%93%E6%9E%84"><span class="toc-number">1.1.</span> <span class="toc-text">一、 小程序项目的结构</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%A1%B5%E9%9D%A2%E7%9A%84%E7%BB%93%E6%9E%84"><span class="toc-number">1.2.</span> <span class="toc-text">二、小程序页面的结构</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#001-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%A1%B5%E9%9D%A2%E5%92%8C-Vue-%E7%BB%84%E4%BB%B6%E7%9A%84%E5%AF%B9%E6%AF%94"><span class="toc-number">1.2.1.</span> <span class="toc-text">001 - 小程序页面和 Vue 组件的对比</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#002-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%A1%B5%E9%9D%A2%E4%B8%AD%E6%AF%8F%E4%B8%AA%E6%96%87%E4%BB%B6%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-number">1.2.2.</span> <span class="toc-text">002 - 小程序页面中每个文件的作用</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%88%9B%E5%BB%BA%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%A1%B5%E9%9D%A2"><span class="toc-number">1.3.</span> <span class="toc-text">三、创建小程序页面</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E4%BF%AE%E6%94%B9%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%A1%B9%E7%9B%AE%E7%9A%84%E9%BB%98%E8%AE%A4%E9%A6%96%E9%A1%B5"><span class="toc-number">1.4.</span> <span class="toc-text">四、修改小程序项目的默认首页</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%94%E3%80%81text-%E6%96%87%E6%9C%AC%E7%BB%84%E4%BB%B6%E7%9A%84%E7%94%A8%E6%B3%95"><span class="toc-number">1.5.</span> <span class="toc-text">五、text 文本组件的用法</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#001-text-%E7%BB%84%E4%BB%B6%E7%9A%84%E5%B1%9E%E6%80%A7"><span class="toc-number">1.5.1.</span> <span class="toc-text">001 - text 组件的属性</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#002-%E4%BB%A3%E7%A0%81%E6%A1%88%E4%BE%8B"><span class="toc-number">1.5.2.</span> <span class="toc-text">002 - 代码案例</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%85%AD%E3%80%81view-%E8%A7%86%E5%9B%BE%E5%AE%B9%E5%99%A8%E7%BB%84%E4%BB%B6%E7%9A%84%E7%94%A8%E6%B3%95"><span class="toc-number">1.6.</span> <span class="toc-text">六、view 视图容器组件的用法</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#001-%E7%BB%84%E4%BB%B6%E7%9A%84%E5%B1%9E%E6%80%A7"><span class="toc-number">1.6.1.</span> <span class="toc-text">001 - 组件的属性</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#002-%E4%BB%A3%E7%A0%81%E6%A1%88%E4%BE%8B-1"><span class="toc-number">1.6.2.</span> <span class="toc-text">002 - 代码案例</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%83%E3%80%81button-%E6%8C%89%E9%92%AE%E7%BB%84%E4%BB%B6%E7%9A%84%E7%94%A8%E6%B3%95"><span class="toc-number">1.7.</span> <span class="toc-text">七、button 按钮组件的用法</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#001-%E7%BB%84%E4%BB%B6%E7%9A%84%E5%B1%9E%E6%80%A7-1"><span class="toc-number">1.7.1.</span> <span class="toc-text">001 - 组件的属性</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#002-%E6%A1%88%E4%BE%8B%E4%BB%A3%E7%A0%81"><span class="toc-number">1.7.2.</span> <span class="toc-text">002 - 案例代码</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%85%AB%E3%80%81input-%E6%96%87%E6%9C%AC%E8%BE%93%E5%85%A5%E6%A1%86%E7%BB%84%E4%BB%B6%E7%9A%84%E7%94%A8%E6%B3%95"><span class="toc-number">1.8.</span> <span class="toc-text">八、input 文本输入框组件的用法</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#001-input-%E7%BB%84%E4%BB%B6%E5%B1%9E%E6%80%A7"><span class="toc-number">1.8.1.</span> <span class="toc-text">001 - input 组件属性</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#002-%E6%A1%88%E4%BE%8B%E4%BB%A3%E7%A0%81-1"><span class="toc-number">1.8.2.</span> <span class="toc-text">002 - 案例代码</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B9%9D%E3%80%81image-%E5%9B%BE%E7%89%87%E7%BB%84%E4%BB%B6%E7%9A%84%E7%94%A8%E6%B3%95"><span class="toc-number">1.9.</span> <span class="toc-text">九、image 图片组件的用法</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#001-image-%E7%BB%84%E4%BB%B6%E5%B8%B8%E7%94%A8%E7%9A%84%E5%B1%9E%E6%80%A7"><span class="toc-number">1.9.1.</span> <span class="toc-text">001 - image 组件常用的属性</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#002-%E6%A1%88%E4%BE%8B%E4%BB%A3%E7%A0%81-2"><span class="toc-number">1.9.2.</span> <span class="toc-text">002 - 案例代码</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8D%81%E3%80%81wxss-%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%9A%84%E6%A0%B7%E5%BC%8F%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-number">1.10.</span> <span class="toc-text">十、wxss 中常用的样式选择器</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#001-%E5%88%9D%E5%A7%8B-wxss"><span class="toc-number">1.10.1.</span> <span class="toc-text">001 - 初始 wxss</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#002-wxss-%E5%92%8C-css-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.10.2.</span> <span class="toc-text">002 - wxss 和 css 的区别</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8D%81%E4%B8%80%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF-wxss"><span class="toc-number">1.11.</span> <span class="toc-text">十一、什么是 wxss</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#001-wxss-%E7%9B%AE%E5%89%8D%E6%94%AF%E6%8C%81%E7%9A%84%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-number">1.11.1.</span> <span class="toc-text">001 - wxss 目前支持的选择器</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#002-%E6%A1%88%E4%BE%8B%E4%BB%A3%E7%A0%81-3"><span class="toc-number">1.11.2.</span> <span class="toc-text">002 - 案例代码</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8D%81%E4%BA%8C%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF-rpx-%E5%B0%BA%E5%AF%B8%E5%8D%95%E4%BD%8D"><span class="toc-number">1.12.</span> <span class="toc-text">十二、什么是 rpx 尺寸单位</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8D%81%E4%BA%8C%E3%80%81rpx-%E4%B8%8E-px-%E4%B9%8B%E9%97%B4%E7%9A%84%E6%8D%A2%E7%AE%97"><span class="toc-number">1.13.</span> <span class="toc-text">十二、rpx 与 px 之间的换算</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8D%81%E4%BA%8C%E3%80%81rpx-%E5%92%8C-iPhone6-%E8%AE%BE%E8%AE%A1%E7%A8%BF%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">1.14.</span> <span class="toc-text">十二、rpx 和 iPhone6 设计稿的关系</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8D%81%E4%B8%89%E3%80%81-import-%E6%A0%B7%E5%BC%8F%E5%AF%BC%E5%85%A5"><span class="toc-number">1.15.</span> <span class="toc-text">十三、 @import 样式导入</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#001-%E8%AF%AD%E6%B3%95%E8%A7%A3%E9%87%8A"><span class="toc-number">1.15.1.</span> <span class="toc-text">001 - 语法解释</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#002-%E6%A1%88%E4%BE%8B%E4%BB%A3%E7%A0%81-4"><span class="toc-number">1.15.2.</span> <span class="toc-text">002 - 案例代码</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8D%81%E5%9B%9B%E3%80%81-%E5%85%A8%E5%B1%80%E6%A0%B7%E5%BC%8F%E5%92%8C%E5%B1%80%E9%83%A8%E6%A0%B7%E5%BC%8F"><span class="toc-number">1.16.</span> <span class="toc-text">十四、 全局样式和局部样式</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#001-%E5%85%A8%E5%B1%80%E6%A0%B7%E5%BC%8F"><span class="toc-number">1.16.1.</span> <span class="toc-text">001 - 全局样式</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#002-%E5%B1%80%E9%83%A8%E6%A0%B7%E5%BC%8F"><span class="toc-number">1.16.2.</span> <span class="toc-text">002 - 局部样式</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8D%81%E4%BA%94%E3%80%81app-json-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">1.17.</span> <span class="toc-text">十五、app.json 配置文件</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8D%81%E5%85%AD%E3%80%81pages-%E6%95%B0%E7%BB%84%E7%9A%84%E7%94%A8%E6%B3%95"><span class="toc-number">1.18.</span> <span class="toc-text">十六、pages 数组的用法</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#001-%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE"><span class="toc-number">1.18.1.</span> <span class="toc-text">001 - 基础配置</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#002-%E5%88%9B%E5%BB%BA%E9%A1%B5%E9%9D%A2%E7%9A%84%E5%8F%A6%E4%B8%80%E7%A7%8D%E6%96%B9%E5%BC%8F"><span class="toc-number">1.18.2.</span> <span class="toc-text">002 - 创建页面的另一种方式</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#003-%E8%AE%BE%E7%BD%AE%E9%A1%B9%E7%9B%AE%E7%9A%84%E9%A6%96%E9%A1%B5"><span class="toc-number">1.18.3.</span> <span class="toc-text">003 - 设置项目的首页</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8D%81%E4%B8%83%E3%80%81%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%AA%97%E5%8F%A3%E7%9A%84%E7%BB%84%E6%88%90%E9%83%A8%E5%88%86"><span class="toc-number">1.19.</span> <span class="toc-text">十七、小程序窗口的组成部分</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8D%81%E5%85%AB%E3%80%81%E8%AE%BE%E7%BD%AE%E5%AF%BC%E8%88%AA%E6%A0%8F%E6%A0%87%E9%A2%98%E6%96%87%E5%AD%97%E5%86%85%E5%AE%B9"><span class="toc-number">1.20.</span> <span class="toc-text">十八、设置导航栏标题文字内容</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8D%81%E4%B9%9D%E3%80%81%E8%AE%BE%E7%BD%AE%E5%AF%BC%E8%88%AA%E6%A0%8F%E8%83%8C%E6%99%AF%E8%89%B2"><span class="toc-number">1.21.</span> <span class="toc-text">十九、设置导航栏背景色</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%8C%E5%8D%81%E3%80%81%E8%AE%BE%E7%BD%AE%E5%AF%BC%E8%88%AA%E6%A0%8F%E6%A0%87%E9%A2%98%E9%A2%9C%E8%89%B2"><span class="toc-number">1.22.</span> <span class="toc-text">二十、设置导航栏标题颜色</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%8C%E5%8D%81%E4%B8%80%E3%80%81%E5%85%A8%E5%B1%80%E5%BC%80%E5%90%AF%E4%B8%8B%E6%8B%89%E5%88%B7%E6%96%B0%E5%8A%9F%E8%83%BD"><span class="toc-number">1.23.</span> <span class="toc-text">二十一、全局开启下拉刷新功能</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%8C%E5%8D%81%E4%BA%8C%E3%80%81%E8%AE%BE%E7%BD%AE%E4%B8%8B%E6%8B%89%E5%88%B7%E6%96%B0%E7%AA%97%E5%8F%A3%E7%9A%84%E8%83%8C%E6%99%AF%E8%89%B2"><span class="toc-number">1.24.</span> <span class="toc-text">二十二、设置下拉刷新窗口的背景色</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%8C%E5%8D%81%E4%B8%89%E3%80%81%E8%AE%BE%E7%BD%AE%E4%B8%8B%E6%8B%89-loading-%E7%9A%84%E6%A0%B7%E5%BC%8F"><span class="toc-number">1.25.</span> <span class="toc-text">二十三、设置下拉 loading 的样式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%8C%E5%8D%81%E5%9B%9B%E3%80%81%E8%AE%BE%E7%BD%AE%E4%B8%8A%E6%8B%89%E8%A7%A6%E5%BA%95%E7%9A%84%E8%B7%9D%E7%A6%BB"><span class="toc-number">1.26.</span> <span class="toc-text">二十四、设置上拉触底的距离</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%8C%E5%8D%81%E4%BA%94%E3%80%81tabBar-%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-number">1.27.</span> <span class="toc-text">二十五、tabBar 的概念</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%8C%E5%8D%81%E5%85%AD%E3%80%81tabBar-%E7%9A%84%E7%BB%84%E6%88%90%E9%83%A8%E5%88%86"><span class="toc-number">1.28.</span> <span class="toc-text">二十六、tabBar 的组成部分</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%8C%E5%8D%81%E4%B8%83%E3%80%81tabBar-%E8%8A%82%E7%82%B9%E7%9A%84%E9%85%8D%E7%BD%AE%E9%A1%B9"><span class="toc-number">1.29.</span> <span class="toc-text">二十七、tabBar 节点的配置项</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#001-tabBar-%E8%8A%82%E7%82%B9%E7%9A%84%E9%85%8D%E7%BD%AE%E9%A1%B9"><span class="toc-number">1.29.1.</span> <span class="toc-text">001 - tabBar 节点的配置项</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#002-list-%E8%8A%82%E7%82%B9%E7%9A%84%E9%85%8D%E7%BD%AE%E9%A1%B9"><span class="toc-number">1.29.2.</span> <span class="toc-text">002 - list 节点的配置项</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%8C%E5%8D%81%E5%85%AB%E3%80%81%E9%A1%B5%E9%9D%A2%E9%85%8D%E7%BD%AE"><span class="toc-number">1.30.</span> <span class="toc-text">二十八、页面配置</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#001-%E9%A1%B5%E9%9D%A2%E9%85%8D%E7%BD%AE%E5%92%8C%E5%B1%80%E9%83%A8%E9%85%8D%E7%BD%AE%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">1.30.1.</span> <span class="toc-text">001 - 页面配置和局部配置的关系</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#002-%E9%A1%B5%E9%9D%A2%E9%85%8D%E7%BD%AE%E5%B1%9E%E6%80%A7"><span class="toc-number">1.30.2.</span> <span class="toc-text">002 - 页面配置属性</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%8C%E5%8D%81%E4%B9%9D%E3%80%81%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-number">1.31.</span> <span class="toc-text">二十九、生命周期的概念</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#001-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-number">1.31.1.</span> <span class="toc-text">001 - 小程序的生命周期</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#002-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E7%9A%84%E4%B8%A4%E7%A7%8D%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.31.2.</span> <span class="toc-text">002 - 小程序生命周期的两种类型</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%89%E5%8D%81-%E3%80%81%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%87%BD%E6%95%B0"><span class="toc-number">1.32.</span> <span class="toc-text">三十 、小程序的生命周期函数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%89%E5%8D%81%E4%B8%80%E3%80%81%E5%BA%94%E7%94%A8%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%87%BD%E6%95%B0"><span class="toc-number">1.33.</span> <span class="toc-text">三十一、应用生命周期函数</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#001-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E7%9A%84%E5%88%86%E7%B1%BB"><span class="toc-number">1.33.1.</span> <span class="toc-text">001 - 小程序生命周期的分类</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#002-%E5%BA%94%E7%94%A8%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-number">1.33.2.</span> <span class="toc-text">002 - 应用生命周期</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%89%E5%8D%81%E4%BA%8C%E3%80%81%E9%A1%B5%E9%9D%A2%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%87%BD%E6%95%B0"><span class="toc-number">1.34.</span> <span class="toc-text">三十二、页面生命周期函数</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2020/09/24/day2/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2020/09/24/day2/&text=小程序day2"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2020/09/24/day2/&title=小程序day2"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2020/09/24/day2/&is_video=false&description=小程序day2"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=小程序day2&body=Check out this article: http://example.com/2020/09/24/day2/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2020/09/24/day2/&title=小程序day2"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2020/09/24/day2/&title=小程序day2"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2020/09/24/day2/&title=小程序day2"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2020/09/24/day2/&title=小程序day2"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2020/09/24/day2/&name=小程序day2&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2020/09/24/day2/&t=小程序day2"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2020
+    rcc
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/projects_url">项目</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    <!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+<!-- clipboard -->
+
+  
+<script src="/lib/clipboard/clipboard.min.js"></script>
+
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
